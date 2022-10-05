@@ -15,6 +15,7 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -129,7 +130,8 @@
                                     <li class="nav-link"><a href="javascript:void(0)"
                                             class="nav-item dropdown-item">Settings</a></li>
                                     <li class="dropdown-divider"></li>
-                                    <li class="nav-link"><a href="{{ url('/logout')}}" class="nav-item dropdown-item">Log
+                                    <li class="nav-link"><a href="{{ url('/logout')}}"
+                                            class="nav-item dropdown-item">Log
                                             out</a></li>
                                 </ul>
                             </li>
@@ -169,27 +171,27 @@
                                                     placeholder="Masukan No Invoice">
                                             </div>
                                         </div>
-                                        <div class="col-md-5 px-md-1">
+                                        <div class="col-md-6 px-md-1">
                                             <div class="form-group">
                                                 <label>Tanggal</label>
-                                                <input name="tgl" type="date" class="date form-control" placeholder="Masukan Tanggal"
-                                                    value="">
+                                                <input name="tgl" type="date" class="date form-control"
+                                                    placeholder="Masukan Tanggal" value="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5 pr-md-1">
                                             <div class="form-group">
                                                 <label>Nama Pembeli</label>
-                                                <input name="namapembeli" type="text" class="form-control" placeholder="Nama Pembeli"
-                                                    value="">
+                                                <input name="namapembeli" type="text" class="form-control"
+                                                    placeholder="Nama Pembeli" value="">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 pr-md-1">
                                             <div class="form-group">
                                                 <label>Nomor Pembeli</label>
-                                                <input name="nopembeli" type="text" class="form-control" placeholder="Nomor Pembeli"
-                                                    value="">
+                                                <input name="nopembeli" type="text" class="form-control"
+                                                    placeholder="Nomor Pembeli" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -197,29 +199,48 @@
                                         <div class="col-md-11 pr-md-1">
                                             <div class="form-group">
                                                 <label>Alamat Pembeli</label>
-                                                <input name="alamat" type="text" class="form-control" placeholder="Alamat Pembeli" value="">
+                                                <input name="alamat" type="text" class="form-control"
+                                                    placeholder="Alamat Pembeli" value="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 pr-md-1">
+                                        <div class="col-md-2 pr-md-1">
+                                            <div class="form-group">
+                                                <label>Kode Barang</label>
+                                                <input name="kode[]" type="text" class="form-control" placeholder="Kode"
+                                                    value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 pr-md-1">
                                             <div class="form-group">
                                                 <label>Nama Barang</label>
                                                 <input name="namabarang[]" type="text" class="form-control"
                                                     placeholder="Masukan Nama Barang" value="">
                                             </div>
                                         </div>
-                                        <div class="col-md-2 pl-md-1">
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-3 pr-md-1">
                                             <div class="form-group">
                                                 <label>Quantity</label>
-                                                <input name="qty[]" type="text" class="form-control" placeholder="Qty" value="">
+                                                <input name="qty[]" type="text" class="form-control" placeholder="Qty"
+                                                    value="">
                                             </div>
                                         </div>
-                                        <div class="col-md-4 pl-md-1">
+                                        <div class="col-md-4 pr-md-1">
                                             <div class="form-group">
                                                 <label>Harga</label>
-                                                <input name="harga[]" type="text" class="form-control" placeholder="Harga/pcs"
-                                                    value="">
+                                                <input name="harga[]" type="text" class="form-control"
+                                                    placeholder="Harga/pcs" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pr-md-1">
+                                            <div class="form-group">
+                                                <label>Tambahan</label>
+                                                <input name="tambahan[]" type="text" class="form-control"
+                                                    placeholder="Charge tambahan" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -227,7 +248,8 @@
                                     <div class="row">
                                         <div class="col-md-12 pl-md-1">
                                             <div align="center" class="form-group">
-                                                <button type="button" onclick="tambah()" class="btn btn-fill btn-primary">Tambah Barang</button>
+                                                <button type="button" onclick="tambah()"
+                                                    class="btn btn-fill btn-primary">Tambah Barang</button>
                                             </div>
                                         </div>
                                     </div>
@@ -235,7 +257,7 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-fill btn-primary">Cetak PDF</button>
                             </div>
-                                </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -307,29 +329,45 @@
     <script src="{{ asset('js/black-dashboard.min.js?v=1.0.0') }}"></script>
     <script src="{{ asset('demo/demo.js') }}"></script>
     <script>
-        function tambah()
-        {
+        function tambah() {
             tambahan = `
-                            <div class="row">
-                                <div class="col-md-6 pr-md-1">
-                                    <div class="form-group">
-                                        <label>Nama Barang</label>
-                                        <input name="namabarang[]" type="text" class="form-control" placeholder="Masukan Nama Barang" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-2 pl-md-1">
-                                    <div class="form-group">
-                                        <label>Quantity</label>
-                                        <input name="qty[]" type="text" class="form-control" placeholder="Qty" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 pl-md-1">
-                                    <div class="form-group">
-                                        <label>Harga</label>
-                                        <input name="harga[]" type="text" class="form-control" placeholder="Harga/pcs" value="">
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-md-2 pr-md-1">
+                    <div class="form-group">
+                        <label>Kode Barang</label>
+                        <input name="kode[]" type="text" class="form-control" placeholder="Kode" value="">
+                    </div>
+                </div>
+                <div class="col-md-9 pr-md-1">
+                    <div class="form-group">
+                        <label>Nama Barang</label>
+                        <input name="namabarang[]" type="text" class="form-control" placeholder="Masukan Nama Barang"
+                            value="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 pr-md-1">
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input name="qty[]" type="text" class="form-control" placeholder="Qty" value="">
+                    </div>
+                </div>
+                <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input name="harga[]" type="text" class="form-control" placeholder="Harga/pcs" value="">
+                    </div>
+                </div>
+                <div class="col-md-4 pr-md-1">
+                    <div class="form-group">
+                        <label>Tambahan</label>
+                        <input name="tambahan[]" type="text" class="form-control" placeholder="Charge tambahan"
+                            value="">
+                    </div>
+                </div>
+            </div>
                                     `;
             $('#newitem').append(tambahan);
         }

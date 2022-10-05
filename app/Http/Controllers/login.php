@@ -40,6 +40,6 @@ class login extends Controller
     {
         $request->session()->forget('admin');
         $request->session()->flush();
-        return redirect()->route('login');
+        return view('login');
     }
 }

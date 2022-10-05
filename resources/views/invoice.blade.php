@@ -7,15 +7,14 @@
   </head>
   <body>
     <header class="clearfix">
-      <div id="logo">
+      <!-- <div id="logo">
         <img src="{{asset('invoice/logo.png')}}">
-      </div>
+      </div> -->
       <h1>INVOICE {{$data['noinvoice']}}</h1>
       <div id="company" class="clearfix">
-        <div>Yeonamchin Kshop</div>
-        <div>Jl mulu jadian kaga<br /> AZ 85004, US</div>
-        <div>(602) 519-0450</div>
-        <div>yeonamchin@gmail.com</div>
+        <div>YEONAMCHIN.KSHOP</div>
+        <div>Jl H. Som<br /> Tangerang Selatan</div>
+        <div>Mail :yeonamchin</div>
       </div>
       <div id="project">
         <div><span>PEMBELI</span> {{$data['nama']}}</div>
@@ -28,35 +27,43 @@
       <table>
         <thead>
           <tr>
-            <th class="service">SERVICE</th>
+            <th class="service">NO</th>
+            <th>KODE BARANG</th>
             <th class="desc">DESCRIPTION</th>
             <th>HARGA</th>
             <th>QTY</th>
+            <th>BIAYA TAMBAHAN</th>
             <th>TOTAL</th>
           </tr>
         </thead>
         <tbody>
+        <?php $i=1;?>
           @foreach ($data['barang'] as $b)
           <tr>
-            <td class="service"></td>
+            <td class="service"><?php echo $i;?></td>
+            <td class="kode">{{$b['kode']}}</td>
             <td class="desc">{{$b['namabarang']}}</td>
-            <td class="unit">{{$b['harga']}}</td>
+            <td class="unit">{{number_format($b['harga'], 2)}}</td>
             <td class="qty">{{$b['qty']}}</td>
-            <td class="total">{{$b['total']}}</td>
+            <td class="tambahan">{{number_format($b['tambahan'], 2)}}</td>
+            <td class="total">{{number_format($b['total'], 2)}}</td>
           </tr>
+          <?php $i++;?>
           @endforeach
           <tr>
             <td class="service"></td>
             <td class="desc"></td>
             <td class="unit"></td>
+            <td></td>
+            <td></td>
             <td class="qty"><b>GrandTotal</b></td>
-            <td class="total">{{$data['grandtotal']}}</td>
+            <td class="total">{{number_format($data['grandtotal'], 2)}}</td>
           </tr>
         </tbody>
       </table>
       <div id="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        <div>Terbilang:</div>
+        <div class="notice">{{$data['terbilang']}} Rupiah.</div>
       </div>
     </main>
     <footer>
