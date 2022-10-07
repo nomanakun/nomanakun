@@ -167,7 +167,7 @@
                                         <div class="col-md-5 pr-md-1">
                                             <div class="form-group">
                                                 <label>No Invoice</label>
-                                                <input name="noinvoice" type="text" class="form-control"
+                                                <input id="inv" name="noinvoice" type="text" class="form-control"
                                                     placeholder="Masukan No Invoice">
                                             </div>
                                         </div>
@@ -244,6 +244,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
                                     <div id="newitem"></div>
                                     <div class="row">
                                         <div class="col-md-12 pl-md-1">
@@ -329,47 +330,67 @@
     <script src="{{ asset('js/black-dashboard.min.js?v=1.0.0') }}"></script>
     <script src="{{ asset('demo/demo.js') }}"></script>
     <script>
+        var count = 0;
         function tambah() {
-            tambahan = `
-            <div class="row">
-                <div class="col-md-2 pr-md-1">
-                    <div class="form-group">
-                        <label>Kode Barang</label>
-                        <input name="kode[]" type="text" class="form-control" placeholder="Kode" value="">
+            
+            count++;
+            var tambahan = `
+            <div id="div`+count+`">
+                <div  class="row">
+                    <div class="col-md-2 pr-md-1">
+                        <div class="form-group">
+                            <label>Kode Barang</label>
+                            <input name="kode[]" type="text" class="form-control" placeholder="Kode" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 pr-md-1">
+                        <div class="form-group">
+                            <label>Nama Barang</label>
+                            <input name="namabarang[]" type="text" class="form-control" placeholder="Masukan Nama Barang"
+                                value="">
+                        </div>
+                    </div>
+                    <div class="col-md-2 pr-md-1">
+                        <div class="form-group">
+                        <label>Hapus</label>
+                            <button style="margin-top:0px" type="button" onclick=foo("`+count+`") class="btn btn-fill btn-primary">x</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-9 pr-md-1">
-                    <div class="form-group">
-                        <label>Nama Barang</label>
-                        <input name="namabarang[]" type="text" class="form-control" placeholder="Masukan Nama Barang"
-                            value="">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+                <div class="row">
 
-                <div class="col-md-3 pr-md-1">
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <input name="qty[]" type="text" class="form-control" placeholder="Qty" value="">
+                    <div class="col-md-3 pr-md-1">
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input name="qty[]" type="text" class="form-control" placeholder="Qty" value="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 pr-md-1">
-                    <div class="form-group">
-                        <label>Harga</label>
-                        <input name="harga[]" type="text" class="form-control" placeholder="Harga/pcs" value="">
+                    <div class="col-md-4 pr-md-1">
+                        <div class="form-group">
+                            <label>Harga</label>
+                            <input name="harga[]" type="text" class="form-control" placeholder="Harga/pcs" value="">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 pr-md-1">
-                    <div class="form-group">
-                        <label>Tambahan</label>
-                        <input name="tambahan[]" type="text" class="form-control" placeholder="Charge tambahan"
-                            value="">
+                    <div class="col-md-4 pr-md-1">
+                        <div class="form-group">
+                            <label>Tambahan</label>
+                            <input name="tambahan[]" type="text" class="form-control" placeholder="Charge tambahan"
+                                value="">
+                        </div>
                     </div>
+                    
                 </div>
+                <hr>
             </div>
+            
                                     `;
             $('#newitem').append(tambahan);
+            
+        }
+
+        function foo(which)
+        {
+            $('#div'+which).remove();
         }
 
         $(document).ready(function () {

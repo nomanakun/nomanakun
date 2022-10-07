@@ -14,7 +14,7 @@
       <div id="company" class="clearfix">
         <div>YEONAMCHIN.KSHOP</div>
         <div>Jl H. Som<br /> Tangerang Selatan</div>
-        <div>Mail :yeonamchin</div>
+        <div>yeonamchin.kshop@gmail.com</div>
       </div>
       <div id="project">
         <div><span>PEMBELI</span> {{$data['nama']}}</div>
